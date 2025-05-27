@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app-client:
+    build: .
+    env_file: .env
+    container_name: ${PROJECTNAME_FRONTEND}-${JOB_BASE_NAME}
+    image: client/${PROJECTNAME_FRONTEND}
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_SOCKET_URL=
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
